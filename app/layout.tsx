@@ -29,8 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navbar/>
         {children}
+        <h2>Fotter Section</h2>
         </body>
-      <h2>Fotter Section</h2>
+      
     </html>
   );
 }
