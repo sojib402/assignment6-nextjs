@@ -115,7 +115,7 @@ const FitDetailspage = async ({ params }:IFitDetailsPageProps) => {
                         {/* <button className='px-3 py-2 text-white border border-white rounded-2xl'>
                             ♧ Save for later
                         </button> */}
-                        <SaveButton/>
+                        <SaveButton fit={fit}/>
                     </div>
                 </div>
 

@@ -8,6 +8,7 @@ const ListedFits = () => {
     return (
         <div>
             Listed Fits
+            {addPlans.length}
         </div>
     );
 };
