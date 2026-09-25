@@ -11,7 +11,9 @@ const Navbar = () => {
                <h2>FITLOG</h2>
             </div>
             <div className='flex justify-between items-center gap-7'>
+                <Link href={'/'}>
             <button className='text-[#C2F800] px-5 py-2 rounded-4xl'>Workouts</button>
+            </Link>
             <Link href={'/'}>My Plan</Link>
             </div>
 
