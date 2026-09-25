@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
-
+import FitsProvider from "./context/FitsContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,10 +27,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       
       <body className="min-h-full flex flex-col">
+        <FitsProvider>
         <Navbar/>
         {children}
         <h2>Fotter Section</h2>
+        </FitsProvider>
         </body>
+        
       
     </html>
   );

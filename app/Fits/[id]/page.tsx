@@ -1,17 +1,26 @@
 import { IFit } from '@/app/types/books.type';
 import React from 'react';
 import Image from 'next/image';
-
+import PlanButton from '@/app/components/FitDetails/PlanButton';
+import SaveButton from '@/app/components/FitDetails/SaveButton';
+interface IFitDetailsPageProps{
+    params:Promise<{
+        id:string;
+    }>;
+}
 const getFits = async () => {
     const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
     const data = await response.json();
     return data;
 };
 
-const FitDetailspage = async ({ params }) => {
+const FitDetailspage = async ({ params }:IFitDetailsPageProps) => {
     const { id } = await params;
     const fitsData = await getFits();
     const fit = fitsData.find((fit: IFit) => String(fit.id) === String(id));
+    if (!fit) {
+    return <div>Fit not found</div>;
+}
 
     console.log(fit);
 
@@ -98,13 +107,15 @@ const FitDetailspage = async ({ params }) => {
                     </div>
 
                     <div className='flex gap-3 mt-5'>
-                        <button className='bg-[#CCFF00] px-3 py-2 rounded-2xl text-black'>
-                            Add to today's plan
-                        </button>
+                        {/* <button className='bg-[#CCFF00] px-3 py-2 rounded-2xl text-black'>
+                           🗓️ Add to today's plan
+                        </button> */}
+                        <PlanButton fit={fit}/>
 
-                        <button className='px-3 py-2 text-white border border-white rounded-2xl'>
-                            Save for later
-                        </button>
+                        {/* <button className='px-3 py-2 text-white border border-white rounded-2xl'>
+                            ♧ Save for later
+                        </button> */}
+                        <SaveButton/>
                     </div>
                 </div>
 

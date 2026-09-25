@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { IFit } from '@/app/types/books.type';
-
+import Link from 'next/link';
+// import Fits from '@/app/Fits/page';
 interface IFitCardProps{
     fit:IFit
 }
@@ -29,10 +30,11 @@ const FitCard = ({fit}:IFitCardProps) => {
                                     })
                                     }
                                 </div>
-        
-                                <h2 className="text-white text-lg font-bold">
+                                <Link href={`/Fits/${fit.id}`}>
+                                <button className="text-white text-lg font-bold">
                                     {fit.name}
-                                </h2>
+                                </button>
+                                </Link>
         
                                 <p className="text-gray-400 text-sm">
                                     {fit.equipment}
