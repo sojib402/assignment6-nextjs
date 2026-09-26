@@ -8,7 +8,7 @@ interface IFitDetailsPageProps{
         id:string;
     }>;
 }
-const getFits = async () => {
+const getFits = async ():Promise<IFit[]> => {
     const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
     const data = await response.json();
     return data;
@@ -25,15 +25,15 @@ const FitDetailspage = async ({ params }:IFitDetailsPageProps) => {
     console.log(fit);
 
     return (
-        <div className='flex justify-between gap-8 container mx-auto py-10'>
+        <div className='flex flex-col md:flex-row justify-between gap-8 container mx-auto py-10 px-4 sm:px-6 lg:px-0'>
 
-            <div className='w-1/2 shrink-0'>
+            <div className='w-full md:w-1/2 shrink-0'>
                 <Image
                     src={fit.image}
                     alt={fit.name}
                     width={800}
                     height={600}
-                    className='w-full h-[600px] object-cover rounded-xl'
+                    className='w-full h-[400px] md:h-[600px] object-cover rounded-xl'
                 />
             </div>
 
@@ -42,7 +42,7 @@ const FitDetailspage = async ({ params }:IFitDetailsPageProps) => {
 
                 <p className='text-gray-400 mb-4'>{fit.description}</p>
 
-                <div className='flex gap-2 mb-4'>
+                <div className='flex flex-wrap gap-2 mb-4'>
                     {
                         fit.muscleGroups.map((muscle, index) => {
                             return (
@@ -106,15 +106,11 @@ const FitDetailspage = async ({ params }:IFitDetailsPageProps) => {
                         }
                     </div>
 
-                    <div className='flex gap-3 mt-5'>
-                        {/* <button className='bg-[#CCFF00] px-3 py-2 rounded-2xl text-black'>
-                           🗓️ Add to today's plan
-                        </button> */}
+                    <div className='flex flex-col sm:flex-row gap-3 mt-5'>
+                        
                         <PlanButton fit={fit}/>
 
-                        {/* <button className='px-3 py-2 text-white border border-white rounded-2xl'>
-                            ♧ Save for later
-                        </button> */}
+                      
                         <SaveButton fit={fit}/>
                     </div>
                 </div>

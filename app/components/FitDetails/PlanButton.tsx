@@ -5,7 +5,10 @@ import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 
 const PlanButton = ({fit}:{fit:IFit}) => {
-    const {addPlans,setAddPlans}=useContext(FitsContext)
+    const {addPlans,setAddPlans}:{
+        addPlans:IFit[];
+        setAddPlans:React.Dispatch<React.SetStateAction<IFit[]>>
+    }=useContext(FitsContext)
     const handlePlan=()=>{
         const duplicate=addPlans.some((item)=>item.id===fit.id)
         if(duplicate){
@@ -17,7 +20,7 @@ const PlanButton = ({fit}:{fit:IFit}) => {
     }
     return (
         <div>
-            <button onClick={()=>handlePlan()} className='bg-[#CCFF00] px-3 py-2 rounded-2xl text-black'>
+            <button onClick={()=>handlePlan()} className='bg-[#CCFF00] px-3 py-2 rounded-2xl text-black text-sm sm:text-base whitespace-nowrap'>
                            🗓️ Add to today's plan
           </button>
         </div>
