@@ -10,7 +10,7 @@ const ButtonSave = () => {
             <button>Saved</button>
             </Link>
 
-            <button className='bg-white rounded-full px-2 text-black'>{addSave.length}</button>
+            <button className='text-white border border-white rounded-full px-2 text-black'>{addSave.length}</button>
         </div>
     );
 };

@@ -2,13 +2,18 @@
 import { FitsContext } from '@/app/context/FitsContext';
 import { IFit } from '@/app/types/books.type';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const PlanButton = ({fit}:{fit:IFit}) => {
     const {addPlans,setAddPlans}=useContext(FitsContext)
     const handlePlan=()=>{
-        console.log('read button is triggered',fit)
+        const duplicate=addPlans.some((item)=>item.id===fit.id)
+        if(duplicate){
+            toast.error(`'${fit.name}' already exits`)
+            return;
+        }
         setAddPlans([...addPlans,fit])
-        alert(`you have read '${fit.name}'`)
+         toast.success(`you have triggered Plan '${fit.name}'`)
     }
     return (
         <div>
