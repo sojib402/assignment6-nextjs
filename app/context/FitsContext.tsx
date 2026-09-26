@@ -12,9 +12,9 @@ interface IFitsContext {
 
 export const FitsContext = createContext<IFitsContext>({
     addPlans: [],
-    setAddPlans: () => {},
+    setAddPlans: () => { },
     addSave: [],
-    setAddSave: () => {},
+    setAddSave: () => { },
 });
 
 const FitsProvider = ({ children }: { children: ReactNode }) => {
